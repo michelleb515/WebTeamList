@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import model.ListTeam;
+import model.ListTeams;
 
 /**
  * Servlet implementation class editPlayerServlet
@@ -41,22 +42,36 @@ public class editPlayerServlet extends HttpServlet {
 		// TODO Auto-generated method stub
 		//create ListTeamHelper object
 		ListTeamHelper lth = new ListTeamHelper();
+		ListTeamsHelper ltsh = new ListTeamsHelper(); 
+
 		//get updated values from the page
 		String name = request.getParameter("name");
 		int jersey = Integer.parseInt(request.getParameter("jersey"));
 		int weight = Integer.parseInt(request.getParameter("weight"));
 		Integer tempId = Integer.parseInt(request.getParameter("id"));
+		int teamId = Integer.parseInt(request.getParameter("teamId"));
+		System.out.println("team id = " + teamId);
+		
+		//get all team values
+		//Integer tempId = Integer.parseInt(request.getParameter("id"));
+		
+		//create new listTeams ojbect and populate wtih values
+		//then pass listTeams object to ListTeam (player) object
+		
+		
 		//create ListTeam by using ListTeamHelper search method
 		ListTeam playerToUpdate = lth.searchForPlayerById(tempId);
+		ListTeams lt = new ListTeams(teamId);
 		
 		//update new values in ListTeam
 		playerToUpdate.setName(name);
 		playerToUpdate.setJersey(jersey);
 		playerToUpdate.setWeight(weight);
-		
+		playerToUpdate.setTeamId(lt);
+
 		//Update database using ListTeamHelper update method
 		lth.updatePlayer(playerToUpdate);
-		
+				
 		getServletContext().getRequestDispatcher("/viewAllPlayersServlet").forward(request, response);
 	}
 

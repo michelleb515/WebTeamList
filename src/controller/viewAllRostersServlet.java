@@ -1,7 +1,6 @@
 package controller;
 
 import java.io.IOException;
-
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -9,16 +8,16 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- * Servlet implementation class viewAllPlayersServlet
+ * Servlet implementation class viewAllRostersServlet
  */
-@WebServlet("/viewAllPlayersServlet")
-public class viewAllPlayersServlet extends HttpServlet {
+@WebServlet("/viewAllRostersServlet")
+public class viewAllRostersServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public viewAllPlayersServlet() {
+    public viewAllRostersServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -28,17 +27,19 @@ public class viewAllPlayersServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		ListTeamHelper lth = new ListTeamHelper(); 
-		request.setAttribute("AllPlayers",lth.showAllPlayers()); 
-	
-		if (lth.showAllPlayers().isEmpty()) {
-			request.setAttribute("allPlayers", "-");
+		//response.getWriter().append("Served at: ").append(request.getContextPath());
+		System.out.println("~~~~~~~viewAllRostersServlet ~~~~~");
+		ListRosterHelper lrh = new ListRosterHelper(); 
+		System.out.println("~~~~~~~created ListRosterHelper");
+		request.setAttribute("allRosters",lrh.showAllRosters());
+		System.out.println("All Rosters:  " + lrh.showAllRosters());
+		
+		if (lrh.showAllRosters().isEmpty()) {
+			request.setAttribute("allRosters", "-");
 		}
-		System.out.println("ShowAllPlayers:  " + lth.showAllPlayers());
 		
 		//Dispatch to appropriate jsp
-		getServletContext().getRequestDispatcher("/player-list.jsp").forward(request, response);
-		
+		getServletContext().getRequestDispatcher("/roster-list.jsp").forward(request, response);
 	}
 
 	/**

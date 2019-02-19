@@ -69,13 +69,22 @@ public class navigationServlet extends HttpServlet {
 				Integer tempId = Integer.parseInt(request.getParameter("id"));
 				ListTeam playerToEdit = lth.searchForPlayerById(tempId);
 				request.setAttribute("playerToEdit", playerToEdit);
+								
+				// Get List of Teams
+				ListTeamsHelper ltsh = new ListTeamsHelper();
+				request.setAttribute("allTeams", ltsh.showAllTeams());
+				 System.out.println("All Teams: " + ltsh.showAllTeams());
+				if (ltsh.showAllTeams().isEmpty()) {
+					request.setAttribute("allTeams", " ");
+				}
+				
 				getServletContext().getRequestDispatcher("/edit-player.jsp").forward(request, response);
 			//} catch (NumberFormatException e) {
 				// If user didn't make a selection, just refresh the page
 				//getServletContext().getRequestDispatcher("/viewAllPlayersServlet").forward(request, response);
 			//}
 		} else if (act.equals("add")) {
-			getServletContext().getRequestDispatcher("/index.html").forward(request, response);
+			getServletContext().getRequestDispatcher("/createPlayerServlet").forward(request, response);
 		} else {
 			getServletContext().getRequestDispatcher("/viewAllPlayersServlet").forward(request, response);
 		}

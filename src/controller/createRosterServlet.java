@@ -1,7 +1,6 @@
 package controller;
 
 import java.io.IOException;
-
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -9,16 +8,16 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- * Servlet implementation class viewAllPlayersServlet
+ * Servlet implementation class createRosterServlet
  */
-@WebServlet("/viewAllPlayersServlet")
-public class viewAllPlayersServlet extends HttpServlet {
+@WebServlet("/createRosterServlet")
+public class createRosterServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public viewAllPlayersServlet() {
+    public createRosterServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -28,17 +27,7 @@ public class viewAllPlayersServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		ListTeamHelper lth = new ListTeamHelper(); 
-		request.setAttribute("AllPlayers",lth.showAllPlayers()); 
-	
-		if (lth.showAllPlayers().isEmpty()) {
-			request.setAttribute("allPlayers", "-");
-		}
-		System.out.println("ShowAllPlayers:  " + lth.showAllPlayers());
-		
-		//Dispatch to appropriate jsp
-		getServletContext().getRequestDispatcher("/player-list.jsp").forward(request, response);
-		
+		response.getWriter().append("Served at: ").append(request.getContextPath());
 	}
 
 	/**

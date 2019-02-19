@@ -1,7 +1,6 @@
 package controller;
 
 import java.io.IOException;
-
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -9,16 +8,16 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- * Servlet implementation class viewAllPlayersServlet
+ * Servlet implementation class viewAllTeamsServlet
  */
-@WebServlet("/viewAllPlayersServlet")
-public class viewAllPlayersServlet extends HttpServlet {
+@WebServlet("/viewAllTeamsServlet")
+public class viewAllTeamsServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public viewAllPlayersServlet() {
+    public viewAllTeamsServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -27,17 +26,18 @@ public class viewAllPlayersServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		ListTeamHelper lth = new ListTeamHelper(); 
-		request.setAttribute("AllPlayers",lth.showAllPlayers()); 
-	
-		if (lth.showAllPlayers().isEmpty()) {
-			request.setAttribute("allPlayers", "-");
+		ListTeamsHelper lth = new ListTeamsHelper(); 
+		request.setAttribute("allTeams",lth.showAllTeams()); 
+				
+		if (lth.showAllTeams().isEmpty()) {
+			System.out.println("oh no!  No data!");
+			request.setAttribute("allTeams", "-");
 		}
-		System.out.println("ShowAllPlayers:  " + lth.showAllPlayers());
+		
+		System.out.println("ViewAllTeams: " + lth.showAllTeams());
 		
 		//Dispatch to appropriate jsp
-		getServletContext().getRequestDispatcher("/player-list.jsp").forward(request, response);
+		getServletContext().getRequestDispatcher("/teams-list.jsp").forward(request, response);
 		
 	}
 

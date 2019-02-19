@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import model.ListTeam;
+import model.ListTeams;
 
 /**
  * Servlet implementation class addPlayerServlet
@@ -34,8 +35,13 @@ public class addPlayerServlet extends HttpServlet {
 		int jersey = Integer.parseInt(request.getParameter("jersey"));
 		int weight = Integer.parseInt(request.getParameter("weight")); 
 		
+		int teamId = Integer.parseInt(request.getParameter("teamId"));
+		System.out.println("team id = " + teamId);
+		
+		ListTeams lt = new ListTeams(teamId);
+						
 		ListTeamHelper lth = new ListTeamHelper(); 
-		ListTeam toAdd = new ListTeam(name, jersey, weight);
+		ListTeam toAdd = new ListTeam(name, jersey, weight, lt);
 		lth.insertPlayer(toAdd);
 		
 		//add the request dispatcher to direct back to the index.html page

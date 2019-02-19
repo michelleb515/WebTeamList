@@ -16,12 +16,14 @@
 					<td>${currentplayer.name}</td>
 					<td>${currentplayer.jersey}</td>
 					<td>${currentplayer.weight}</td>
+					<td>${currentplayer.teamId}</td>
 				</tr>
 			</c:forEach>
 		</table>
-		<input type="submit" value="edit" name="doThisToPlayer"> <input
-			type="submit" value="delete" name="doThisToPlayer"> <input
-			type="submit" value="add" name="doThisToPlayer">
+		<input type="submit" value="edit" name="doThisToPlayer"> 
+		<input type="submit" value="delete" name="doThisToPlayer">
+		<br /> 
+		<a href="index.html">Home Page</a>
 	</form>
 </body>
 </html>

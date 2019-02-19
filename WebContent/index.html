@@ -2,16 +2,20 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Team List App</title>
+<title>Web Team List App</title> 
 </head>
-<body>
-	<form action="addPlayerServlet" method="post">
-		Name: <input type="text" name="name"> 
-		Jersey No: <input type="text" name="jersey">
-		Weight:  <input type="text" name="weight"> 
-		<input type="submit" value="Add Player">
+<body> 
+	<br />
+	<form action="addTeamsServlet" method="post"> 
+		Team Name: <input type="text" name="teamName"> 
+		Team Colors: <input type="text" name="teamColors">
+		<input type="submit" value="Add Team">
 	</form>
 	<br />
-	<a href="viewAllPlayersServlet">View the complete list</a>
+	<a href="viewAllPlayersServlet">View all players</a>
+	<br /> 
+	<a href="viewAllTeamsServlet">View all teams</a>
+	<br />
+	<a href="createPlayerServlet">Add player</a>
 </body>
 </html>

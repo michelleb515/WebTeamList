@@ -16,7 +16,7 @@
 					<td>${currentplayer.name}</td>
 					<td>${currentplayer.jersey}</td>
 					<td>${currentplayer.weight}</td>
-					<td>${currentplayer.teamId}</td>
+					<td>${currentplayer.teamId.name}</td>
 				</tr>
 			</c:forEach>
 		</table>

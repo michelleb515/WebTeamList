@@ -25,7 +25,7 @@ public class ListTeam {
 	private int jersey; 
 	@Column(name = "WEIGHT")
 	private int weight;
-	@ManyToOne(cascade=CascadeType.REFRESH)
+	@ManyToOne(cascade=CascadeType.REFRESH, fetch=FetchType.EAGER)
 	@JoinColumn(name = "TEAM_ID")
 	private ListTeams listofTeams;
 
